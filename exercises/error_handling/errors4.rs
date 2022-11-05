@@ -16,7 +16,7 @@ impl PositiveNonzeroInteger {
         match value {
             n if n < 0 => Err(CreationError::Negative),
             n if n == 0 => Err(CreationError::Zero),
-            n => Ok(PositiveNonzeroInteger(n as u64)),
+            n => Ok(Self(n as u64)),
         }
     }
 }

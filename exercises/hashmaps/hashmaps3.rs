@@ -42,21 +42,8 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         let t1 = (team_1_name, team_1_score, team_2_score);
         let t2 = (team_2_name, team_2_score, team_1_score);
 
-        for t in vec![t1, t2].iter() {
+        for t in &[t1, t2] {
             let (name, scored, conceded) = t;
-            /*
-            let (name, scored, conceded) = t;
-            let (s, c) = match scores.get(name) {
-                Some(et) => (et.goals_scored, et.goals_conceded),
-                None => (0, 0),
-            };
-            let team = Team {
-                name: name.into(),
-                goals_scored: scored + s,
-                goals_conceded: conceded + c,
-            };
-            scores.insert(name.into(), team);
-             */
             let entry = scores.entry(name.to_owned()).or_insert(Team {
                 name: name.to_owned(),
                 goals_scored: 0,
